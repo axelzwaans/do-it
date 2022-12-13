@@ -7,3 +7,7 @@ routes = Blueprint('routes', __name__)
 def home():
     return render_template("home.html")
 
+
+@routes.route('/create')
+def create():
+    return render_template("create.html")
