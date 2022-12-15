@@ -18,22 +18,24 @@ def logout():
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        first_name = request.form.get('first_name')
-        last_name = request.form.get('last_name')
+        firstName = request.form.get('firstName')
+        lastName = request.form.get('lastName')
         email = request.form.get('email')
         password = request.form.get('password')
         password1 = request.form.get('password1')
 
         if len(email) < 5:
-            flash('Please enter a valid email address.', category='error')
-        elif len(first_name) < 2:
-            flash('First name must be greater than 1 characters', category='error')
+            flash('Please enter a valid email address.')
+        elif len(firstName) < 2:
+            flash('First name must be greater than 1 characters')
+        elif len(lastName):
+            flash('Last name must be greater than 1 characters')
         elif password != password1:
-            flash('Passwords must match', category='error')
+            flash('Passwords must match')
         elif len(password) < 7:
-            flash('Password must be at least 7 characters', category='error')
+            flash('Password must be at least 7 characters')
         else:
-            flash('Success', category='success')
+            flash('Success')
 
     return render_template("register.html")
 

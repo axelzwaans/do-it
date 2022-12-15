@@ -3,42 +3,32 @@
 
 {% block content %}
 
-<div class="row">
-    <form class="col s12" method="POST">
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="first_name" name="first_name" type="text" class="validate">
-                <label for="first_name">First Name</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="last_name" name="last_name" type="text" class="validate">
-                <label for="last_name">Last Name</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="email" name="email" type="email" class="validate">
-                <label for="email">Email</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="password" name="password" type="password" class="validate">
-                <label for="password">Password</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="password1" name="password1" type="password" class="validate">
-                <label for="password1">Confirm Password</label>
-            </div>
-        </div>
-        <div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Register
-                <i class="material-icons right">send</i>
-            </button>
-        </div>
-    </form>
-</div>
+
+<form method="POST">
+    <h3 align="center">Register</h3>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <label for="firstName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+    </div>
+    <div class="form-group">
+        <label for="password2">Confirm Password</label>
+        <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirn Password">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 
 {% endblock %}
