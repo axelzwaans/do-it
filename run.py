@@ -1,4 +1,4 @@
-from do_it import create_app
+from vanlife_blog import create_app
 
 app = create_app()
 

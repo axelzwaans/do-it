@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="container fitscreen">
+    <div class="row align-items-center fit">
+        <div class="col fit">
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="firstName">
+                </div>
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="lastName">
+                </div>
+                <div class="col-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                </div>
+                <div class="col-12">
+                    <label for="password1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password1" name="password1"
+                        placeholder="Enter password">
+                </div>
+                <div class="col-12">
+                    <label for="password2" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="password2" name="password2"
+                        placeholder="Confirm password">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-6 fit">
+            <div>
+                <img src="../static/images/vanlife 1.jpg" alt="vanlife">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
