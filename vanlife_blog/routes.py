@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from flask_login import login_required, current_user
+from vanlife_blog import app, db
 
 routes = Blueprint('routes', __name__)
 

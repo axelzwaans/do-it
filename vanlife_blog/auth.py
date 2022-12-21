@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from . import db
+from vanlife_blog import app, db
 from .models import User
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -33,7 +33,7 @@ def register():
         firstName = request.form.get('firstName')
         lastName = request.form.get('lastName')
         email = request.form.get('email')
-        password1 = request.form.get('password1')
+        password = request.form.get('password')
         password2 = request.form.get('password2')
 
         email_exists = User.query.filter_by(email=email).first()
@@ -51,7 +51,7 @@ def register():
         elif len(password1) < 7:
             flash('Password must be at least 7 characters', 'error')
         else:
-            new_user = User(email=email, username=username, password=generate_password_hash(password1, method='sha256'))
+            new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
