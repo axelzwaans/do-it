@@ -1,8 +1,6 @@
 import os
-# from vanlife_blog import create_app
 from vanlife_blog import app
 
-# app = create_app()
 
 if __name__ == '__main__':
     app.run(
