@@ -1,13 +1,11 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from vanlife_blog import app, db
-from .models import User
+from vanlife_blog.models import User, Post
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
-auth = Blueprint('auth', __name__)
 
-
-@auth.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -27,7 +25,7 @@ def login():
     return render_template('login.html', user=current_user)
 
 
-@auth.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         firstName = request.form.get('firstName')
@@ -61,7 +59,7 @@ def register():
     return render_template("register.html", user=current_user)
 
 
-@auth.route('/logout')
+@app.route('/logout')
 # @login_required
 def logout():
     logout_user()

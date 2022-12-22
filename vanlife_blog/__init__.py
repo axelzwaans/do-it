@@ -6,7 +6,6 @@ if os.path.exists("env.py"):
 
 from flask_migrate import Migrate
 from flask_login import LoginManager
-# from .models import db
 
 
 app = Flask(__name__)
@@ -15,7 +14,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 
 db = SQLAlchemy(app)
 
-from vanlife_blog import routes
+from vanlife_blog import routes, auth
 
 login_manager = LoginManager()
 login_manager.login_view = "auth.login"

@@ -1,14 +1,14 @@
-from . import db
+from vanlife_blog import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    firstName = db.Column(db.String(40), nullable=False)
-    lastName = db.Column(db.String(40), nullable=False)
-    email = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(50), nullable=False)
+    firstName = db.Column(db.String(1000))
+    lastName = db.Column(db.String(1000))
+    email = db.Column(db.String(1000), unique=True)
+    password = db.Column(db.String(1000))
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
 
 
@@ -17,3 +17,4 @@ class Post(db.Model):
     text = db.Column(db.Text, nullable=False)
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     author = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
+
