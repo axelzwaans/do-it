@@ -16,7 +16,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 from vanlife_blog import routes, auth
-from vanlife_blog.models import User
+from vanlife_blog.models import User, Post
 
 login_manager = LoginManager()
 login_manager.login_view = "auth.login"
