@@ -3,18 +3,14 @@
 
 {% block content %}
 
-<div class="container">
-    <h3 class="center">Register</h3>
+<div class="container-md">
     <div class="row align-items-center">
-        <div class="col">
-            <form class="row g-3" method="POST">
-                <div class="col-md-6">
-                    <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" name="firstName" id="firstName">
-                </div>
-                <div class="col-md-6">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" name="lastName" id="lastName">
+        <div class="col d-grid gap-3">
+            <h3 class="center">Register</h3>
+            <form class="col-6 row g-3" method="POST">
+                <div class="col-md-12">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username">
                 </div>
                 <div class="col-12">
                     <label for="email">Email</label>
@@ -31,11 +27,11 @@
                         placeholder="Confirm password">
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-outline-primary">Register</button>
                 </div>
             </form>
         </div>
-        <div class="col-6">
+        <div class="col">
             <div>
                 <img src="../static/images/vanlife_1.jpg" alt="vanlife">
             </div>

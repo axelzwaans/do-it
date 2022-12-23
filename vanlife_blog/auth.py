@@ -14,9 +14,9 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Logged in!', 'success')
+                flash('Welcome {post.user.username}!', 'success')
                 login_user(user, remember=True)
-                return redirect(url_for('home'))
+                return redirect(url_for('blog'))
             else:
                 flash('Password is incorrect.', 'error')
         else:
@@ -28,28 +28,28 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        firstName = request.form.get('firstName')
-        lastName = request.form.get('lastName')
         email = request.form.get('email')
+        username = request.form.get('username')
         password = request.form.get('password')
         password2 = request.form.get('password2')
 
         email_exists = User.query.filter_by(email=email).first()
+        username_exists = User.query.filter_by(username=username).first()
 
         if email_exists:
             flash('This email address is already in use.', 'error')
+        elif username_exists:
+            flash('This username is already taken.', 'error')
         elif len(email) < 4:
             flash('Please enter a valid email address.', 'error')
-        elif len(firstName) < 2:
-            flash('First name must be greater than 1 characters', 'error')
-        elif len(lastName) < 2:
-            flash('Last name must be greater than 1 characters', 'error')
+        elif len(username) < 2:
+            flash('Username must be greater than 1 characters', 'error')
         elif password != password2:
             flash('Passwords must match', 'error')
         elif len(password) < 7:
             flash('Password must be at least 7 characters', 'error')
         else:
-            new_user = User(email=email, password=generate_password_hash(password, method='sha256'))
+            new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)

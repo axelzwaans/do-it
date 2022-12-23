@@ -5,10 +5,10 @@
 
 
 <div class="container">
-    <h3 class="center">Log in</h3>
     <div class="row align-items-center">
-        <div class="col">
-            <form class="row g-3" method="POST">
+        <div class="col d-grid gap-3">
+            <h3 class="center">Log in</h3>
+            <form class="row g-3 col-6" method="POST">
                 <div class="col-12">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
@@ -19,9 +19,10 @@
                         placeholder="Enter password">
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Log in</button>
+                    <button type="submit" class="btn btn-outline-primary">Log in</button>
                 </div>
             </form>
+            <p>Not yet a user? Register <a href="{{ url_for('register') }}">here</a></p>
         </div>
         <div class="col-6">
             <div>
