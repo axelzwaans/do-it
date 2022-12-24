@@ -4,6 +4,8 @@ from vanlife_blog.models import User, Post
 from flask_login import login_user, logout_user, login_required, current_user, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 
+# app = Blueprint("app", __name__)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
