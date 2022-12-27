@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # app = Blueprint("app", __name__)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -16,7 +16,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Welcome {post.user.username}!', 'success')
+                flash('You are logged in!', 'success')
                 login_user(user, remember=True)
                 return redirect(url_for('blog'))
             else:
@@ -24,7 +24,7 @@ def login():
         else:
             flash('Email does not exist', 'error')
 
-    return render_template('login.html', user=current_user)
+    return render_template('home.html', user=current_user)
 
 
 @app.route('/register', methods=['GET', 'POST'])
