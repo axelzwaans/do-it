@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block content %}
 
-<div class="container-md">
-    <div class="row align-items-center">
-        <div class="col d-grid gap-3">
-            <h3 class="center">Register</h3>
+
+<div class="d-md-flex main align-items-center justify-content-around register-page">
+    <div class="col-6 d-grid gap-3 px-4 pt-4">
+        <h3 class="center">Register</h3>
             <form class="col-6 row g-3" method="POST">
                 <div class="col-md-12">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" name="username" id="username">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Select a username">
                 </div>
                 <div class="col-12">
                     <label for="email">Email</label>
@@ -30,12 +30,9 @@
                     <button type="submit" class="btn btn-outline-primary">Register</button>
                 </div>
             </form>
-        </div>
-        <div class="col">
-            <div>
-                <img src="../static/images/vanlife_1.jpg" alt="vanlife">
-            </div>
-        </div>
+    </div>
+    <div>
+        <img src="../static/images/vanlife_illustration_01.jpg" alt="">
     </div>
 </div>
 

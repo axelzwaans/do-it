@@ -5,11 +5,15 @@
 <main>
 <div class="d-md-flex main align-items-center justify-content-around">
     <div class="col-6 d-grid gap-3 px-4 pt-4">
-        <h2>Welcome to Vanlife Blog</h2>
+        <h2>Welcome to <strong>Vanlife Blog</strong></h2>
         <h3>A free to use web app, where you can write about your vanlife adventures</h3>
+        {% if current_user.is_authenticated %}
+        &nbsp  
+        {% else %}
         <a class="btn btn-outline-primary col-2" href="{{ url_for('login') }}" role="button">Login</a>
+        {% endif %}
     </div>
-    <div class="col-6">
+    <div>
         <img src="../static/images/vanlife_illustration_01.jpg" alt="">
     </div>
 </div>
