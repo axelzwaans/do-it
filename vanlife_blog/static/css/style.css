@@ -5,21 +5,35 @@
 }
 
 body {
-    min-height: 100vh;
     font-family: 'Oxygen', sans-serif;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
-img {
-    max-height: 70vh;
+main {
+    flex: 1;
+    background-color: #fffff7;
 }
 
 nav {
     background-color: #8FC1E3;
 }
 
+img {
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:90%;
+}
+
 footer {
-    margin: 0;
     background-color: #8FC1E3;
+    margin-top: auto;
+}
+
+@media screen and (max-width: 900px) {
+    .flex-direction {
+        flex-direction: column;
+    }
 }

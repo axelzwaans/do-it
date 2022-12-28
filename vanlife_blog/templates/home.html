@@ -2,34 +2,17 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-
-<div class="container-md">
-    <div class="row align-items-center">
-        <div class="col-6 d-grid gap-3">
-            <h2>Welcome to Vanlife Blog</h2>
-            <h3>A free to use web app, where you can write about your vanlife adventures</h3>
-        </div>
-        <div class="col-6 d-grid gap-3">
-            <div>
-                <h3 class="center">Log in</h3>
-                <form class="row g-3 col-6" method="POST">
-                    <div class="col-12">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-                    </div>
-                    <div class="col-12">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Enter password">
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-outline-primary">Log in</button>
-                    </div>
-                </form>
-                <p>Not yet a user? Register <a href="{{ url_for('register') }}">here</a></p>
-            </div>
-        </div>
+<main>
+<div class="d-md-flex main align-items-center justify-content-around">
+    <div class="col-6 d-grid gap-3 px-4 pt-4">
+        <h2>Welcome to Vanlife Blog</h2>
+        <h3>A free to use web app, where you can write about your vanlife adventures</h3>
+        <a class="btn btn-outline-primary col-2" href="{{ url_for('login') }}" role="button">Login</a>
+    </div>
+    <div class="col-6">
+        <img src="../static/images/vanlife_illustration_01.jpg" alt="">
     </div>
 </div>
+</main>
 
 {% endblock %}
