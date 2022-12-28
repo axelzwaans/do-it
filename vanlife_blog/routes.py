@@ -37,14 +37,34 @@ def delete_post(id):
 
     if not post:
         flash("Post does not exist.", 'error')
-    # elif current_user.id != post.id:
-    #     flash('You do not have permission to delete this post.', 'error')
     else:
         db.session.delete(post)
         db.session.commit()
         flash('Post deleted.', 'success')
     
     return redirect(url_for('blog'))
+
+
+@app.route('/edit_post/<post_id>', methods=('GET', 'POST'))
+@login_required
+def edit_post(post_id):
+    text = request.form.get('text')
+
+    if request.method == 'POST':
+        text = request.form.get('text')
+        error = None
+
+        if not title:
+            error = 'Title is required.'
+
+        if error is not None:
+            flash(error)
+        else:
+            db.session.add(post)
+            db.session.commit()
+            return redirect(url_for('blog'))
+
+    return render_template('edit_post.html')
 
 
 @app.route("/posts/<username>")

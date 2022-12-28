@@ -20,12 +20,29 @@ nav {
     background-color: #748c84;
 }
 
+.navbar {
+    --bs-navbar-color: #black;
+    --bs-navbar-hover-color: white;
+}
+
 .login-page {
     background-color: #fffff7;
 }
 
 .register-page {
     background-color: #fffff7;
+}
+
+.alert-success {
+    background-color: #fbbcab;
+    width: auto;
+    text-align: center;
+    --bs-alert-color: #3b3c3e;
+}
+
+.alert-danger {
+    width: auto;
+    text-align: center;
 }
 
 img {

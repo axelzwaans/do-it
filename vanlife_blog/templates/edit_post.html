@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{username}}Edit Post{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="p-5" align="center">Edit Post</h2>
+        <div class="d-grid gap-3">
+            <form method="POST">
+                <textarea name="text" id="text" class="form-control">{{ request.form.get('text') }}</textarea>
+                <br>
+                <div align="center">
+                    <button type="submit" class="btn btn-lg btn-outline-secondary">Post</button>
+                </div>
+            </form>
+        </div>
+</div>
+
+{% endblock %}
+{% block footer %}
+{% endblock %}
