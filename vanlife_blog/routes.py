@@ -1,13 +1,10 @@
-from flask import Blueprint, render_template, request, flash, url_for, redirect, jsonify
+from flask import render_template, request, flash, url_for, redirect, jsonify
 from flask_login import login_user, logout_user, login_required, current_user, login_manager
 from vanlife_blog import app, db
 from vanlife_blog.models import User, Post, Comment, Like
 
-# views = Blueprint('routes', __name__)
-
 
 @app.route('/')
-# @login_required
 def home():
     return render_template("home.html")
 
@@ -45,26 +42,23 @@ def delete_post(id):
     return redirect(url_for('blog'))
 
 
-@app.route('/edit_post/<post_id>', methods=('GET', 'POST'))
+@app.route('/edit_post/<id>', methods=('GET', 'POST'))
 @login_required
-def edit_post(post_id):
-    text = request.form.get('text')
+def edit_post(id):
+    post = Post.query.filter_by(id=id).first()
 
     if request.method == 'POST':
         text = request.form.get('text')
-        error = None
 
-        if not title:
-            error = 'Title is required.'
-
-        if error is not None:
-            flash(error)
+        if not text:
+            flash('Post cannot be empty', 'error')
         else:
-            db.session.add(post)
+            post.text = request.form.get('text')
             db.session.commit()
+            flash('Post updated!', 'success')
             return redirect(url_for('blog'))
 
-    return render_template('edit_post.html')
+    return render_template("edit_post.html", post=post)
 
 
 @app.route("/posts/<username>")
