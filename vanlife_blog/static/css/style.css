@@ -9,11 +9,11 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-color: #fffff7;
 }
 
 main {
     flex: 1;
-    background-color: #fffff7;
 }
 
 nav {
@@ -52,17 +52,20 @@ img {
     max-height: 80vh;
 }
 
+.card-header, .card-footer {
+    background-color: #748c84;
+
+}
+
 footer {
     background-color: #748c84;
     margin-top: auto;
 }
 
 footer p {
-    color: white;
+    color: #fbfbf4;
 }
 
-@media screen and (max-width: 1000px) {
-    .flex-direction {
-        flex-direction: column;
-    }
+a {
+    color: #3b3c3e;
 }

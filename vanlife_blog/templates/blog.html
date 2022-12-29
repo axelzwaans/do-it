@@ -4,21 +4,20 @@
 {% block content %}
 
 <div class="container">
-    <h2 class="p-5" align="center">Write your blog here</h2>
+    <h2 class="p-5" align="center">Blog Page</h2>
     <div class="d-flex flex-column mb-3">
         <div class="p-2 d-grid gap-3">
-            <h3 class="center">New post</h3>
             <form method="POST">
                 <textarea name="text" id="text" class="form-control"></textarea>
                 <br>
                 <div align="center">
-                    <button type="submit" class="btn btn-lg btn-outline-secondary">Post</button>
+                    <button type="submit" class="btn btn-lg btn-secondary">Post</button>
                 </div>
             </form>
         </div>
         <div class="p-2 d-grid gap-3">
             {% for post in posts %}
-            <div class="card border-dark">
+            <div class="card text-bg-light border-dark">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
                     <div>
@@ -30,7 +29,7 @@
                         {% endif %}
                         {% if user.id == post.author %}
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle"
+                            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle"
                                 data-bs-toggle="dropdown"></button>
                             <ul class="dropdown-menu">
                                 <li>
@@ -56,7 +55,7 @@
                                         {{comment.text}}
                                     </div>
                                     <div>
-                                        <small class="text-muted">{{comment.date_created}}</small>
+                                        <small>{{comment.date_created}}</small>
                                         {% if user.id == comment.author or user.id == post.author %}
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle"
@@ -81,16 +80,16 @@
                             <small>View {{post.comments | length}} Comments</small>
                         </a>
                         {% else %}
-                        <small class="text-muted">No comments</small>
+                        <small>No comments</small>
                         {% endif %}
                     </p>
                     <form class="input-group mb-3" action="/create-comment/{{post.id}}" method="POST">
                         <input type="text" id="text" name="text" class="form-control"
                             placeholder="Write your comment here.">
-                        <button type="submit" class="btn btn-outline-secondary">Comment</button>
+                        <button type="submit" class="btn btn-secondary">Comment</button>
                     </form>
                 </div>
-                <div class="card-footer text-muted">Date created: {{post.date_created}}
+                <div class="card-footer">Date created: {{post.date_created}}
                 </div>
             </div>
             {% endfor %}
