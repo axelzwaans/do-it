@@ -14,11 +14,11 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('You are logged in!', 'success')
+                flash('You are logged in', 'success')
                 login_user(user, remember=True)
-                return redirect(url_for('blog'))
+                return redirect(url_for('dashboard'))
             else:
-                flash('Password is incorrect.', 'error')
+                flash('Password is incorrect', 'error')
         else:
             flash('Email does not exist', 'error')
 
@@ -37,11 +37,11 @@ def register():
         username_exists = User.query.filter_by(username=username).first()
 
         if email_exists:
-            flash('This email address is already in use.', 'error')
+            flash('This email address is already in use', 'error')
         elif username_exists:
-            flash('This username is already taken.', 'error')
+            flash('This username is already taken', 'error')
         elif len(email) < 4:
-            flash('Please enter a valid email address.', 'error')
+            flash('Please enter a valid email address', 'error')
         elif len(username) < 2:
             flash('Username must be greater than 1 characters', 'error')
         elif password != password2:
@@ -54,7 +54,7 @@ def register():
             db.session.commit()
             login_user(new_user, remember=True)
             flash('User created', 'success')
-            return redirect(url_for('home'))
+            return redirect(url_for('dashboard'))
 
     return render_template("register.html", user=current_user)
 

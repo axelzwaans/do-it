@@ -1,20 +1,25 @@
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
-from datetime import datetime
 
 
+# Create User Model
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True)
-    username = db.Column(db.String(150), unique=True)
-    password = db.Column(db.String(150))
+    email = db.Column(db.String(100), unique=True)
+    username = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(550))
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     posts = db.relationship('Post', backref='user', passive_deletes=True)
     comments = db.relationship('Comment', backref='user', passive_deletes=True)
     likes = db.relationship('Like', backref='user', passive_deletes=True)
 
+    # Create A String
+    def __repr__(self):
+        return '<username %r>' % self.username
 
+
+# Create Post Model
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.Text, nullable=False)
@@ -25,6 +30,7 @@ class Post(db.Model):
     likes = db.relationship('Like', backref='post', passive_deletes=True)
 
 
+# Create Comments Model
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(200), nullable=False)
@@ -35,6 +41,7 @@ class Comment(db.Model):
         'post.id', ondelete="CASCADE"), nullable=False)
 
 
+# Create Likes Model
 class Like(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())

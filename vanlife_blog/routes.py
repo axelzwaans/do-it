@@ -3,12 +3,12 @@ from flask_login import login_user, logout_user, login_required, current_user, l
 from vanlife_blog import app, db
 from vanlife_blog.models import User, Post, Comment, Like
 
-
+# Create home page route
 @app.route('/')
 def home():
     return render_template("home.html")
 
-
+# Create blog page route
 @app.route('/blog', methods=['GET', 'POST'])
 @login_required
 def blog():
@@ -21,27 +21,27 @@ def blog():
             post = Post(text=text, author=current_user.id)
             db.session.add(post)
             db.session.commit()
-            flash('Post created!', 'success')
+            flash('Post created', 'success')
 
     posts = Post.query.all()
     return render_template("blog.html", user=current_user, posts=posts)
 
-
+# Create delete post route
 @app.route("/delete-post/<id>")
 @login_required
 def delete_post(id):
     post = Post.query.filter_by(id=id).first()
 
     if not post:
-        flash("Post does not exist.", 'error')
+        flash("Post does not exist", 'error')
     else:
         db.session.delete(post)
         db.session.commit()
-        flash('Post deleted.', 'success')
+        flash('Post deleted', 'success')
     
     return redirect(url_for('blog'))
 
-
+# Create edit post route
 @app.route('/edit_post/<id>', methods=('GET', 'POST'))
 @login_required
 def edit_post(id):
@@ -125,3 +125,44 @@ def like(post_id):
     
     return jsonify({"likes": len(post.likes), "liked": current_user.id in map(lambda x: x.author, post.likes)})
         
+
+# Create Dashboard Page
+@app.route("/dashboard", methods=['GET', 'POST'])
+@login_required
+def dashboard():
+    app_users = User.query.order_by(User.date_created)
+    return render_template('dashboard.html', app_users=app_users)
+
+
+# Edit User
+@app.route('/edit_user/<id>', methods=['GET', 'POST'])
+def edit_user(id):
+    username_to_update = User.query.get_or_404(id)
+   
+    if request.method == 'POST':
+        username_to_update.username = request.form['username']
+        try:
+            db.session.commit()
+            flash('Username updated', 'success')
+            return render_template('edit_user.html', username_to_update=username_to_update)
+        except:
+            flash('Unable to edit user', 'error')
+            return render_template('edit_user.html', username_to_update=username_to_update)
+    else:
+        return render_template('edit_user.html', username_to_update=username_to_update)
+
+
+
+@app.route("/delete_user/user_id", methods=['GET', 'POST'])
+@login_required
+def delete_user(user_id):
+    user = User.query.filter_by(id=id).first()
+
+    if not post:
+        flash("User does not exist", 'error')
+    else:
+        db.session.delete(user)
+        db.session.commit()
+        flash('User deleted', 'success')
+    
+    return redirect(url_for('dashboard'))

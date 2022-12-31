@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="p-5" align="center">Dashboard</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ current_user.username }}</h5>
+            <p class="card-text">
+                <strong>User Id: </strong>{{ current_user.id }} <br>
+                <strong>Email: </strong>{{ current_user.email }} <br>
+                <strong>Date joined: </strong>{{ current_user.date_created }} <br>
+            </p>
+            <a href="{{ url_for('blog') }}" class="btn btn-secondary">Blog</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+            <br><br>
+            <h5 class="card-title">User accounts</h5>
+            <table class="table table-hover table-bordered table-striped">
+                {% for app_user in app_users %}
+                <tr>
+                    <td><a href="{{ url_for('posts', username=username) }}">{{ app_user.username }}</a></td>
+                    <td>{{ app_user.email }}</td>
+                    <td>{{ app_user.date_created }}</td>
+                    <td><a href="{{ url_for('edit_user', id=id) }}" class="btn btn-secondary" tabindex="-1"
+                            role="button" aria-disabled="true">edit</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
