@@ -3,10 +3,12 @@ from flask_login import login_user, logout_user, login_required, current_user, l
 from vanlife_blog import app, db
 from vanlife_blog.models import User, Post, Comment, Like
 
+
 # Create home page route
 @app.route('/')
 def home():
     return render_template("home.html")
+
 
 # Create blog page route
 @app.route('/blog', methods=['GET', 'POST'])
@@ -25,6 +27,7 @@ def blog():
 
     posts = Post.query.all()
     return render_template("blog.html", user=current_user, posts=posts)
+
 
 # Create delete post route
 @app.route("/delete-post/<id>")
@@ -61,6 +64,7 @@ def edit_post(id):
     return render_template("edit_post.html", post=post)
 
 
+# View user posts
 @app.route("/posts/<username>")
 @login_required
 def posts(username):
@@ -74,6 +78,7 @@ def posts(username):
     return render_template('posts.html', user=current_user, posts=posts, username=username)
 
 
+# Create a comment route
 @app.route("/create-comment/<post_id>", methods=["POST"])
 @login_required
 def create_comment(post_id):
@@ -93,6 +98,7 @@ def create_comment(post_id):
     return redirect(url_for('blog'))
 
 
+# Create a delete comment route
 @app.route("/delete-comment/<comment_id>")
 @login_required
 def delete_comment(comment_id):
@@ -107,6 +113,7 @@ def delete_comment(comment_id):
     return redirect(url_for('blog'))
 
 
+# Create a like-post route
 @app.route("/like-post/<post_id>", methods=["POST"])
 @login_required
 def like(post_id):
@@ -136,9 +143,12 @@ def dashboard():
 
 # Edit User
 @app.route('/edit_user/<id>', methods=['GET', 'POST'])
+@login_required
 def edit_user(id):
     username_to_update = User.query.get_or_404(id)
-   
+    print("/n/n---++++----/n/n")
+    print(username_to_update)
+    
     if request.method == 'POST':
         username_to_update.username = request.form['username']
         try:
@@ -152,7 +162,7 @@ def edit_user(id):
         return render_template('edit_user.html', username_to_update=username_to_update)
 
 
-
+# Delete user
 @app.route("/delete_user/user_id", methods=['GET', 'POST'])
 @login_required
 def delete_user(user_id):
