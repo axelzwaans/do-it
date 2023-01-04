@@ -9,20 +9,31 @@
         <div class="card-body">
             <h5 class="card-title">{{ current_user.username }}</h5>
             <p class="card-text">
-                <strong>User Id: </strong>{{ current_user.id }} <br>
+                <strong>User ID: </strong>{{ current_user.id }} <br>
                 <strong>Email: </strong>{{ current_user.email }} <br>
                 <strong>Date joined: </strong>{{ current_user.date_created }} <br>
+                <strong>Blog posts: </strong>{{ current_user.posts | length }}
             </p>
             <a href="{{ url_for('edit_user', id=current_user.id) }}" class="btn btn-secondary">Edit</a>
             <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
             <br><br>
+            {% if admin == 1 %}
             <h5 class="card-title">User accounts</h5>
             <table class="table table-hover table-bordered table-striped">
+                <tr>
+                    <th>Username</th>
+                    <th>User ID</th>
+                    <th>Email</th>
+                    <th>Date joined</th>
+                    <th>Blog posts</th>
+                </tr>
                 {% for app_user in app_users %}
                 <tr>
-                    <td><a href="">{{ app_user.username }}</a></td>
+                    <td><a href="/posts/{{app_user.username}}">{{ app_user.username }}</a></td>
+                    <td>{{ app_user.id }}</td>
                     <td>{{ app_user.email }}</td>
                     <td>{{ app_user.date_created }}</td>
+                    <td>{{ app_user.posts | length }}</td>
                     <td><a href="{{ url_for('edit_user', id=app_user.id) }}" class="btn btn-secondary" tabindex="-1"
                             role="button" aria-disabled="true">edit</a></td>
                     <td><a href="" class="btn btn-danger" tabindex="-1"
@@ -30,6 +41,7 @@
                 </tr>
                 {% endfor %}
             </table>
+            {% endif %}
         </div>
     </div>
 </div>

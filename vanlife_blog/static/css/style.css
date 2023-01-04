@@ -73,3 +73,7 @@ a {
     height: auto;
     overflow-y: scroll;
 }
+
+th {
+    text-align: center;
+}
