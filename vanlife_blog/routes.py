@@ -169,16 +169,19 @@ def edit_user(id):
 
 
 # Delete user
-@app.route("/delete_user/id", methods=['GET', 'POST'])
+@app.route("/delete_user/<id>", methods=['GET', 'POST'])
 @login_required
-def delete_user(user_id):
+def delete_user(id):
     user_to_delete = User.query.filter_by(id=id).first()
 
-    if not post:
-        flash("User does not exist", 'error')
-    else:
-        db.session.delete(user)
+    try:
+        db.session.delete(user_to_delete)
         db.session.commit()
         flash('User deleted', 'success')
+        return render_template('dashboard.html', user_to_delete=user_to_delete)
     
-    return redirect(url_for('dashboard'))
+    except:
+        flash("User does not exist", 'error')
+        
+    
+    
