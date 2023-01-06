@@ -6,6 +6,15 @@ Vanlife blog is a simple and easy to use blogging application specifically desig
 
 # UX
 
-User stories
+## User stories
+
+I assigned 3 epics to this project, which I then broke down into user stories;
+
+Epic: User accounts
+
+
+Epic: User posts
+
+Epic: Admin accounts
 
 
