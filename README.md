@@ -70,4 +70,18 @@ I added a graphical representation in the form of an entity relationship model t
 
 ## Features
 
-### Existing featurea
+I set out to create a simple app that anyone can engage in, providing an easy way for people in the vanlife community to log their travels and stories. I wanted this app to be a little more than a simple blogging app so I included functionality which allows users to interact with each other on a basic level, similar to a social media app.
+
+### Existing features
+
+- **Nav bar** - My app has a responsive nav bar which allows the user to seemlesly navigate between pages. The nav bar will show appropriate navigation options depending on whether the user is authenticated. It also includes the name of the app, 'Vanlife Blog', which links the user back to the landing page from any page. Going by Bootstrap's 'mobile first' approach, the navbar menu automatically renders as collapsed on smaller screen sizes, and can be toggled by a hamburger button.
+
+- **Landing page** - The landing page contains the image which inspired the colour scheme of my app. It also includes a brief description of the app's purpose followed a button which generates the login/registration form, not taking the user away from the page.
+
+- **Login / Registration** - The login / registration forms are presented on the landing page. A first time user will be required to register before they are able to use the app. To register, a user just needs to provide a username, email address, password and password confirmation. Once registered, they can then use their email address to log in. A user cannot login or register if they leave a field empty or enter invalid data.
+
+- **Blog page** - This is where the magic happens! Using Bootstrap forms, I created a simple section where users can input their blog posts. A basic text input field followed by a 'post' button allowed space for blog posts to be displayed on the same page. Using Bootstrap 'cards' as content containers, I was able to display information of multiple blog post on a single page in a neat and organised fashion. Within these cards, users are able to edit and delete their own blog posts. 2 features I thought were fun to implement were a **comment** feature where registered users can comment on other users' blog posts. Once a post has a comment, a collapsable link will appear which can display/hide all comments. A **'like'** feature allowing a registered used to click a 'thumb' icon to like a post and click it again to 'unlike' it was implemented using Javascript. The blog post cards display the blog posts including the following:
+    - Blog post author
+    - Blog post comments (including the comment author and date created)
+    - Comment text input field
+    - Date the blog post was created
