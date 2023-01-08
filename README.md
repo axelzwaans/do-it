@@ -8,7 +8,7 @@ Vanlife blog is a simple and easy to use blogging application specifically desig
 
 ## User stories
 
-Before starting this project, I thought about how this software application might provide value to a user. Using agile methodology, I identified a set of user stories and and used GitHub projects to document them. I tagged them either as 'must have' (this is functionality which my app has) and 'could have' (functionality which my app doesn't have, but would be a good feature.)
+Before starting this project, I thought about how this software application might provide value to a user. Using agile methodology, I identified a set of user stories and and used GitHub projects to document them. I tagged them either as 'must have' (this is functionality which my app has) or 'could have' (functionality which my app doesn't have, but would be a good feature.)
 
 ![github-issues](../vanlife_blog/vanlife_blog/static/images-readme/github_issues.png)
 
@@ -136,3 +136,15 @@ Desktop
 Mobile
 
 ![lighthouse-mobile](../vanlife_blog/vanlife_blog/static/images-readme/lighthouse_mobile.png)
+
+### HTML Testing
+
+I used the W3 HTML checker to check the markup validity of my app. After initially validating by URI, I got 2 errors and 1 warning:
+
+![html-checker](../vanlife_blog/vanlife_blog/static/images-readme/html_checker_1.png)
+
+A few tweaks in my html code sorted this out:
+
+![html-checker-fixed](../vanlife_blog/vanlife_blog/static/images-readme/html_checker_2.png)
+
+I investigated the 'Warning' message and concluded I was able to ignore it.
