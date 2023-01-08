@@ -99,8 +99,26 @@ I set out to create a simple app that anyone can engage in, providing an easy wa
 
 ![blog-page](../vanlife_blog/vanlife_blog/static/images-readme/blog_page.png)
 
-- **Dashboard** - I created a simple dashboard page which displays registered users' information. It also has a button which links the user to a page where they can update their username. There are also links to logout or go to the blog page. If the user is also an admin, a table will be displayed underneath the user information card containing a list of all users currently registered to the app, along with their account information. Within this list, the admin has capabality to delete a user.
+- **Dashboard** - I created a simple dashboard page which displays registered users' information. It also has a button which links the user to a page where they can update their username. There are also links to logout or go to the blog page. If the user is also an admin, a table will be displayed underneath the user information card containing a list of all users currently registered to the app, along with their account information. Within this list, the admin has the capability to delete a user, and can click on the username to be redirected straight to that user's posts page.
 
-- **Footer** - A simple footer 
+![user-dashboard](../vanlife_blog/vanlife_blog/static/images-readme/user_dashboard.png)
 
-- **Alerts** - Bootstrap alerts 
+![admin-dashboard](../vanlife_blog/vanlife_blog/static/images-readme/admin_dashboard.png)
+
+
+- **Footer** - I added a simple footer to tie the page together and to put my name to the app. My name acts as a link to my email address and will open up the user's email editor should they want to contact me.
+
+![footer](../vanlife_blog/vanlife_blog/static/images-readme/footer.png)
+
+- **Alerts** - I implemented flexible alerts using the Bootstrap toolkit to provide contextual feedback to users whenever they perform an action for which feedback might be appreciated, or when an error occurs. For example, if a user logs in or creates/deletes a post, or when they try to log in with an empty form field. the appropriate notification will appear at the top of the page, and may be dismissed with the click of a button.
+
+![alert-success](../vanlife_blog/vanlife_blog/static/images-readme/alert_success.png)
+
+![alert-danger](../vanlife_blog/vanlife_blog/static/images-readme/alert_danger.png)
+
+### Features to implement
+
+There are endless features I would like to add to this app, but I will only mention a few key ones below as I feel they would provide the most value in this app. Unfortunately I didn't have the time to implement them.
+
+- Allow users to edit comments.
+- Defensive programming - trigger modals to verify if a user wants to perform certain actions, such as deleting a comment.
