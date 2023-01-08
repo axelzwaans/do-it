@@ -5,14 +5,17 @@
 <main>
     <div class="d-lg-flex main align-items-center justify-content-around">
         <div class="d-grid gap-3 px-4 pt-4">
+            <!-- App title -->
             <h2>Welcome to <strong>Vanlife Blog</strong></h2>
             <h3>A simple web app where you can write about your vanlife adventures</h3>
+            <!-- Links to login/blog depending on user status -->
             {% if current_user.is_authenticated %}
             <a class="btn btn-outline-secondary col-3" href="{{ url_for('blog') }}" role="button">Start blogging</a>
             {% else %}
             <a class="btn btn-outline-secondary col-3" href="{{ url_for('login') }}" role="button">Login</a>
             {% endif %}
         </div>
+        <!-- Page image -->
         <div>
             <img src="../static/images/vanlife_illustration_01.jpg" alt="campervan drawing">
         </div>

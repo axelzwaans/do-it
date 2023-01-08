@@ -6,7 +6,9 @@
 
 <div class="d-lg-flex main align-items-center justify-content-around login-page">
     <div class="d-grid gap-3 px-4 pt-4">
+        <!-- Login page header -->
         <h3 class="center">Log in</h3>
+            <!-- Login form -->
             <form class="col-6 row g-3" method="POST">
                 <div class="col-12">
                     <label for="email" class="form-label">Email</label>
@@ -21,8 +23,10 @@
                     <button type="submit" class="btn btn-outline-secondary">Log in</button>
                 </div>
             </form>
+            <!-- Link to register -->
             <p>Don't have an account? Register <a href="{{ url_for('register') }}">here</a></p>
     </div>
+    <!-- Page image -->
     <div>
         <img src="../static/images/vanlife_illustration_01.jpg" alt="campervan drawing">
     </div>

@@ -4,11 +4,14 @@
 {% block content %}
 
 <div class="container">
+    <!-- Edit post page header -->
     <h2 class="p-5" align="center">Edit Post</h2>
         <div class="d-grid gap-3">
+            <!-- Edit post text input field -->
             <form method="POST">
                 <textarea name="text" id="text" class="form-control">{{ post.text }}</textarea>
                 <br>
+                <!-- Edit post button -->
                 <div align="center">
                     <button type="submit" class="btn btn-lg btn-secondary">Post</button>
                 </div>

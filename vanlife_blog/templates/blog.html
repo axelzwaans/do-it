@@ -4,8 +4,10 @@
 {% block content %}
 
 <div class="container">
+    <!-- Blog page header -->
     <h2 class="p-5" align="center">Blog Page</h2>
     <div class="d-flex flex-column mb-3">
+        <!-- Text input for blog post -->
         <div class="p-2 d-grid gap-3">
             <form method="POST">
                 <textarea name="text" id="text" class="form-control"></textarea>
@@ -15,12 +17,15 @@
                 </div>
             </form>
         </div>
+        <!-- Display blog posts -->
         <div class="p-2 d-grid gap-3">
             {% for post in posts %}
             <div class="card text-bg-light border-dark">
                 <div class="card-header d-flex justify-content-between align-items-center">
+                    <!-- Display post author -->
                     <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
                     <div>
+                        <!-- Display 'like' function -->
                         <span id="likes-count-{{post.id}}">{{ post.likes|length }}</span>
                         {% if user.id in post.likes|map(attribute='author')|list %}
                         <i class="fas fa-thumbs-up fa-xl" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>
@@ -28,6 +33,7 @@
                         <i class="far fa-thumbs-up fa-xl" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>
                         {% endif %}
                         {% if user.id == post.author %}
+                        <!-- Display dropdown menu for 'delete' & 'edit' if user is author -->
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-dark dropdown-toggle"
                                 data-bs-toggle="dropdown"></button>
@@ -44,19 +50,24 @@
                     </div>
                 </div>
                 <div class="card-body d-grid gap-3">
+                    <!-- Display blog post text -->
                     <div class="card-text">{{post.text}}</div>
                     <div class="collapse" id="comments-{{post.id}}">
                         <div class="card">
+                            <!-- Display comments -->
                             <div class="card-body d-grid gap-3" id="comments-expanded-{{post.id}}">
                                 {% for comment in post.comments %}
+                                <!-- Display comment author -->
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         <a href="/posts/{{comment.user.username}}">{{comment.user.username}}</a>:
                                         {{comment.text}}
                                     </div>
                                     <div>
+                                        <!-- Display comment date created -->
                                         <small>{{comment.date_created}}</small>
                                         {% if user.id == comment.author or user.id == post.author %}
+                                        <!-- Display dropdown menu to delete comment if post/comment author -->
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle"
                                                 data-bs-toggle="dropdown"></button>
@@ -74,6 +85,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Display comment text -->
                     <p class="card-text">
                         {% if post.comments | length > 0 %}
                         <a href="#comments-{{post.id}}" data-bs-toggle="collapse" role="button" id="toggleDiv">
@@ -83,12 +95,14 @@
                         <small>No comments</small>
                         {% endif %}
                     </p>
+                    <!-- Write comment -->
                     <form class="input-group mb-3" action="/create-comment/{{post.id}}" method="POST">
                         <input type="text" id="text" name="text" class="form-control"
                             placeholder="Write your comment here.">
                         <button type="submit" class="btn btn-secondary">Comment</button>
                     </form>
                 </div>
+                <!-- Display blog post date created -->
                 <div class="card-footer">Date created: {{post.date_created}}
                 </div>
             </div>

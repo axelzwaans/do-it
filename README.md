@@ -118,7 +118,21 @@ I set out to create a simple app that anyone can engage in, providing an easy wa
 
 ### Features to implement
 
-There are endless features I would like to add to this app, but I will only mention a few key ones below as I feel they would provide the most value in this app. Unfortunately I didn't have the time to implement them.
+There are endless features I would like to add to this app, but I will only mention a few key ones below as I feel they would provide the most value. Unfortunately I didn't have the time to implement them.
 
 - Allow users to edit comments.
 - Defensive programming - trigger modals to verify if a user wants to perform certain actions, such as deleting a comment.
+
+## Testing
+
+### Lighthouse testing
+
+I ran Lighthouse tests on Chrome to check the performance, quality and correctness of this web app. I generated reports for mobile and desktop devices which gave the following results:
+
+Desktop
+
+![lighthouse-desktop](../vanlife_blog/vanlife_blog/static/images-readme/lighthouse_desktop.png)
+
+Mobile
+
+![lighthouse-mobile](../vanlife_blog/vanlife_blog/static/images-readme/lighthouse_mobile.png)
