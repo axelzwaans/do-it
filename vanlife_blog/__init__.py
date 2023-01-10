@@ -7,12 +7,12 @@ if os.path.exists("env.py"):
 from flask_migrate import Migrate
 from flask_login import LoginManager
 
+# Create and configure the app
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 if os.environ.get("DEVELOPMENT") == "True":
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
-
 else:
     uri = os.environ.get("DB_URL")
     if uri.startswith("postgres://"):

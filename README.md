@@ -127,7 +127,7 @@ There are endless features I would like to add to this app, but I will only ment
 
 ### Lighthouse testing
 
-I ran Lighthouse tests on Chrome to check the performance, quality and correctness of this web app. I generated reports for mobile and desktop devices which gave the following results:
+I ran Lighthouse tests on Chrome to check the performance, quality and correctness of this web app. I generated reports for mobile and desktop devices which gave the following results.
 
 Desktop
 
@@ -137,14 +137,44 @@ Mobile
 
 ![lighthouse-mobile](../vanlife_blog/vanlife_blog/static/images-readme/lighthouse_mobile.png)
 
-### HTML Testing
+### HTML testing
 
-I used the W3 HTML checker to check the markup validity of my app. After initially validating by URI, I got 2 errors and 1 warning:
+I used the W3 HTML checker to check the markup validity of my app. After initially validating by URI, I got 2 errors and 1 warning.
 
 ![html-checker](../vanlife_blog/vanlife_blog/static/images-readme/html_checker_1.png)
 
-A few tweaks in my html code sorted this out:
+A few tweaks in my HTML code sorted this out.
 
 ![html-checker-fixed](../vanlife_blog/vanlife_blog/static/images-readme/html_checker_2.png)
 
-I investigated the 'Warning' message and concluded I was able to ignore it.
+### CSS testing
+
+I used the W3C CSS validation service to check for errors and warnings and received the following report.
+
+![css-checker-errors](../vanlife_blog/vanlife_blog/static/images-readme/css_checker.png)
+
+### JavaScript testing
+
+I used JSHint to detect errors and potential problems in my JavaScript code. 
+
+![js-checker-errors](../vanlife_blog/vanlife_blog/static/images-readme/js_tester_warnings.png)
+
+After running my JS code through the validator, I got 8 warnings, which were all version related. I was able to resolve these errors by adding a small block of code to the top of the script.js file;
+
+![js-checker](../vanlife_blog/vanlife_blog/static/images-readme/js_tester.png)
+
+### Python testing
+
+I used the CI Python Linter to check all Python files.
+
+![python-checker-app](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_app.png)
+
+![python-checker-init](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_init.png)
+
+![python-checker-models](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_models.png)
+
+![python-checker-routes](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_routes.png)
+
+## Deployment
+
+
