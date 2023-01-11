@@ -1,12 +1,16 @@
 from flask import render_template, request, flash, redirect, url_for
 from vanlife_blog import app, db
 from vanlife_blog.models import User, Post
-from flask_login import login_user, logout_user, login_required, current_user, login_manager
+from flask_login import login_user, logout_user, login_required, \
+     current_user, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+    Handles user login
+    """
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -27,6 +31,9 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """
+    Handles user registration
+    """
     if request.method == 'POST':
         email = request.form.get('email')
         username = request.form.get('username')
@@ -42,14 +49,17 @@ def register():
             flash('This username is already taken', 'error')
         elif len(email) < 4:
             flash('Please enter a valid email address', 'error')
-        elif len(username) < 2:
+        elif len(username) < 4:
             flash('Username must be greater than 1 characters', 'error')
         elif password != password2:
             flash('Passwords must match', 'error')
         elif len(password) < 7:
             flash('Password must be at least 7 characters', 'error')
         else:
-            new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
+            new_user = User(
+                email=email,
+                username=username,
+                password=generate_password_hash(password, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
@@ -62,5 +72,8 @@ def register():
 @app.route('/logout')
 @login_required
 def logout():
+    """
+    Handles user logout
+    """
     logout_user()
     return redirect(url_for('home'))

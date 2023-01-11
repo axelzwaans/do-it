@@ -48,19 +48,19 @@ This app has been built and customized using Bootstrap. The colour scheme was in
 
 I created a low-fidelity wireframe using Balsamiq to help me design my app. I created a mock up of each page;
 
-Home page
+**Home page**
 
 ![balsamiq-landing_page](../vanlife_blog/vanlife_blog/static/images-readme/landing_page_wireframe.png)
 
-Login/register page
+**Login/register page**
 
 ![balsamiq-login_page](../vanlife_blog/vanlife_blog/static/images-readme/login_wireframe.png)
 
-Blog page
+**Blog page**
 
 ![balsamiq-blog_page](../vanlife_blog/vanlife_blog/static/images-readme/blog_page_wireframe.png)
 
-Dashboard page
+**Dashboard page**
 
 ![balsamiq-dashboard](../vanlife_blog/vanlife_blog/static/images-readme/dashboard_wireframe.png)
 
@@ -129,11 +129,11 @@ There are endless features I would like to add to this app, but I will only ment
 
 I ran Lighthouse tests on Chrome to check the performance, quality and correctness of this web app. I generated reports for mobile and desktop devices which gave the following results.
 
-Desktop
+**Desktop**
 
 ![lighthouse-desktop](../vanlife_blog/vanlife_blog/static/images-readme/lighthouse_desktop.png)
 
-Mobile
+**Mobile**
 
 ![lighthouse-mobile](../vanlife_blog/vanlife_blog/static/images-readme/lighthouse_mobile.png)
 
@@ -159,21 +159,63 @@ I used JSHint to detect errors and potential problems in my JavaScript code.
 
 ![js-checker-errors](../vanlife_blog/vanlife_blog/static/images-readme/js_tester_warnings.png)
 
-After running my JS code through the validator, I got 8 warnings, which were all version related. I was able to resolve these errors by adding a small block of code to the top of the script.js file;
+After running my JS code through the validator, I got 8 warnings, which were all version related. I was able to resolve these errors by adding a small block of code to the top of the script.js file.
 
 ![js-checker](../vanlife_blog/vanlife_blog/static/images-readme/js_tester.png)
 
 ### Python testing
 
-I used the CI Python Linter to check all Python files.
+I used the CI Python Linter to analyse all python files for potential errors. 
+
+**app.py**
 
 ![python-checker-app](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_app.png)
 
-![python-checker-init](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_init.png)
+**models.py**
 
 ![python-checker-models](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_models.png)
 
+**routes.py**
+
 ![python-checker-routes](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_routes.png)
+
+**auth.py**
+
+![python-checker-auth](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_auth.png)
+
+All files came back without any errors, except for the init.py file.
+
+**init.py**
+
+![python-checker-init](../vanlife_blog/vanlife_blog/static/images-readme/python_tester_init.png)
+
+I was able to ignore these errors as putting them at the top of the file would result in a circular import error.
+
+### Manual testing
+
+| Function| Test case | Result |                                                          
+|---------|-----------|--------|
+| Registration form | Form checks if email exists | Pass
+| Registration form | Form checks if username exists | Pass
+| Registration form | Form checks if email is valid | Pass
+| Registration form | Form checks if username is valid | Pass
+| Registration form | Form checks if password is valid | Pass
+| Registration form | Form checks if both password fields match | Pass
+| Registration form | User succesfully registered | Pass
+| Login form | Form checks if email exists | Pass
+| Login form | Form checks if password is correct | Pass
+| Login form | Form checks if password is correct | Pass
+| Blog post | Form checks if text input is valid | Pass
+| Blog post | Create blog post | Pass
+| Blog post | Display blog post | Pass
+| Blog post | Edit blog post | Pass
+| Blog post | Delete blog post | Pass
+| Comment | Create comment | Pass
+| Comment | Display comment | Pass
+| Comment | Delete comment | Pass
+| Logout | User can logout | Pass
+| Dashboard | User can edit username | Pass
+| Dashboard | Admin can delete user | Pass
 
 ## Deployment
 
