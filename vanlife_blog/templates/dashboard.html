@@ -14,7 +14,7 @@
             <p class="card-text">
                 <strong>User ID: </strong>{{ current_user.id }} <br>
                 <strong>Email: </strong>{{ current_user.email }} <br>
-                <strong>Date joined: </strong>{{ current_user.date_created }} <br>
+                <strong>Date joined: </strong>{{ current_user.date_created.strftime('%Y-%m-%d') }} <br>
                 <strong>Blog posts: </strong>{{ current_user.posts | length }}
             </p>
             <!-- Display links -->
@@ -38,7 +38,7 @@
                     <td><a href="/posts/{{app_user.username}}">{{ app_user.username }}</a></td>
                     <td>{{ app_user.id }}</td>
                     <td>{{ app_user.email }}</td>
-                    <td>{{ app_user.date_created }}</td>
+                    <td>{{ app_user.date_created.strftime('%Y-%m-%d') }}</td>
                     <td>{{ app_user.posts | length }}</td>
                     <td><a href="{{ url_for('delete_user', id=app_user.id) }}" class="btn btn-danger" tabindex="-1"
                             role="button" aria-disabled="true">delete user</a></td>

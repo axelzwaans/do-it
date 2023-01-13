@@ -17,7 +17,9 @@ else:
     uri = os.environ.get("DB_URL")
     if uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgresql://", 1)
+        print(uri)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
+    print(app.config["SQLALCHEMY_DATABASE_URI"])
 
 db = SQLAlchemy(app)
 

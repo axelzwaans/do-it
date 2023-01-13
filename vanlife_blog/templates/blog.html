@@ -65,7 +65,7 @@
                                     </div>
                                     <div>
                                         <!-- Display comment date created -->
-                                        <small>{{comment.date_created}}</small>
+                                        <small>{{comment.date_created.strftime('%Y-%m-%d')}}</small>
                                         {% if user.id == comment.author or user.id == post.author %}
                                         <!-- Display dropdown menu to delete comment if post/comment author -->
                                         <div class="btn-group">
@@ -103,7 +103,7 @@
                     </form>
                 </div>
                 <!-- Display blog post date created -->
-                <div class="card-footer">Date created: {{post.date_created}}
+                <div class="card-footer">Date created: {{post.date_created.strftime('%Y-%m-%d')}}
                 </div>
             </div>
             {% endfor %}
