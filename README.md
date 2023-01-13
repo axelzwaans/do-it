@@ -127,7 +127,7 @@ There are endless features I would like to add to this app, but I will only ment
 
 ### Lighthouse testing
 
-I ran Lighthouse tests on Chrome to check the performance, quality and correctness of this web app. I generated reports for mobile and desktop devices which gave the following results.
+I ran Lighthouse tests on Chrome to check the performance, quality and correctness of this web app. I generated reports for mobile and desktop devices which gave the following results;
 
 **Desktop**
 
@@ -139,7 +139,7 @@ I ran Lighthouse tests on Chrome to check the performance, quality and correctne
 
 ### HTML testing
 
-I used the W3 HTML checker to check the markup validity of my app. After initially validating by URI, I got 2 errors and 1 warning.
+I used the W3 HTML checker to check the markup validity of my app. After initially validating by URI, I got 2 errors and 1 warning;
 
 ![html-checker](../vanlife_blog/vanlife_blog/static/images-readme/html_checker_1.png)
 
@@ -149,7 +149,7 @@ A few tweaks in my HTML code sorted this out.
 
 ### CSS testing
 
-I used the W3C CSS validation service to check for errors and warnings and received the following report.
+I used the W3C CSS validation service to check for errors and warnings and received the following report;
 
 ![css-checker-errors](../vanlife_blog/vanlife_blog/static/images-readme/css_checker.png)
 
@@ -218,5 +218,73 @@ I was able to ignore these errors as putting them at the top of the file would r
 | Dashboard | Admin can delete user | Pass
 
 ## Deployment
+
+I deployed this app on Heroku, which is a cloud application platform for developers to build, run and operate their applications. As Heroku is no longer offering multiple free databases to their free tier users, I used a seperate free database service called ElephantSQL to host my PostgreSQL database. First I created my ElephantSQL account;
+
+1. Navigate to the ElephantSQL website and click 'Get a managed database today'.
+2. Select 'Try now for FREE' in the TINY TURTLE database plan.
+3. Select 'Log in with GitHub' and authorize ElephantSQL with my selected GitHub account
+4. Create a new team. (I am the team!)
+
+After setting up my account, I created the database;
+
+1. In the top right hand corner of my account dashboard, click 'Create New Instance'
+2. Set up my plan.
+3. Select region and data center.
+4. Click 'Review'
+5. Check details and click 'Create instance'
+6. Return to the ElephantSQL dashboard and click on the database instance name for my project.
+7. In the URL section, click the copy icon to copy the database URL to my clipboard.
+
+After creating the database and configuring my Gitpod code for Heroku, I was ready to deploy my project. I already had a Heroku account from a previous project, so setting up for deployment was next;
+
+1. Log into Heroku.com and select 'Create new app' on user dashboard.
+2. Choose a name and closest region and click 'Create app'.
+3. Go to the settings tab of my app.
+4. Click 'Reveal Config Vars'.
+5. Copy the database URL from ElephantSQL.
+6. Add a Config Var called 'DATABASE_URL' and paste my ElephantSQL database URL in as the value, click 'Add'.
+7. Add each of my other environment variables except DEVELOPMENT and DB_URL from the env.py file as a config var.
+
+Ready for deployment;
+
+1. Navigate to the “Deploy” tab of my app.
+2. In the deployment method section, select 'Connect to GitHub'.
+3. Search for my repo and click 'Connect'.
+4. I enabled 'Automatic Deploys' so that every push to the main branch will deploy a new version of the app.
+5. DEBUG mode set to 'False'.
+6. Click 'Deploy branch' to start the build process.
+
+Add tables to database;
+
+1. On the Heroku app dashboard, click the 'More' button and select 'Run console'.
+2. Type 'python3' into the console and click 'Run'.
+3. Create the tables using the same commands I use in Gitpod.
+4. Exit the Python terminal by typing 'exit()'.
+5. Click 'Open app' and test CRUD functionality.
+
+## Credits
+
+### Content
+
+- [Balsamiq](https://balsamiq.com) for wireframes.
+- [This YouTube tutorial](https://www.youtube.com/watch?v=GQcM8wdduLI&t=870s) for app functionality.
+- [Lucidchart](https://www.lucidchart.com) for entity relationship model.
+- [StackOverflow](https://stackoverflow.com) for help with code related issues.
+- [Flask documentation](https://flask.palletsprojects.com/en/2.2.x/) for help with setting up a Flask app.
+- [Bootstrap](https://getbootstrap.com) for app layout and components.
+- [Heroku](https://dashboard.heroku.com/apps) for cloud platform.
+- [ElephantSQL](https://www.elephantsql.com/) for hosting the database.
+- [Code Institute](https://learn.codeinstitute.net/dashboard) for course material.
+
+### Media
+
+- [Vanlifer.com](https://vanlifer.com/products/van-vector) for the home page image.
+- [Google Fonts](https://fonts.google.com/knowledge) for the 'Oxygen' font.
+- [Font Awesome](https://fontawesome.com/) for the 'like' icon.
+
+
+
+
 
 
